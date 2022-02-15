@@ -1,0 +1,1 @@
+alias run_pipeline.pl='docker run --rm -v /mnt:/mnt --entrypoint "/opt/tassel3-src/run_pipeline.pl" gfanz/tassel3'
