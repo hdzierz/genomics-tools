@@ -4,7 +4,7 @@
 # It assumes a Debian 9 base image has been used for the container.
 
 # install some things java 6 requires
-apt-get -y install ibasound2 libx11-6 libxext6 libxi6 libxt6 libxtst6 wget
+apt-get -y install libasound2 libx11-6 libxext6 libxi6 libxt6 libxtst6 wget
 
 # download and install oracle-java6-jdk_6u45_amd64.deb
 
