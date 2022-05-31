@@ -1,0 +1,1 @@
+alias samtools='docker run --rm -v /mnt:/mnt gfanz/samtools'
