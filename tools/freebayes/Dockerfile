@@ -1,6 +1,6 @@
 # Base image (note that a specific version of the base image must be used,
 # never the "latest") or "stable"
-FROM debian:bullseye
+FROM debian:11
 
 ##########
 # Metadata

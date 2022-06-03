@@ -1,7 +1,7 @@
 ## Tool Name
 freebayes
 ## Version
-v1.3.1
+v1.3.5
 ## Citation
 https://arxiv.org/abs/1207.3907
 ## How to use GFANZ Docker Containers
