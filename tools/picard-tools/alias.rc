@@ -1,2 +1,2 @@
-alias picard='docker run --rm -v /mnt:/mnt gfanz/picard'
+alias picard='docker run --rm -v /mnt:/mnt gfanz/picard-tools'
 
