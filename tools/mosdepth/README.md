@@ -1,7 +1,7 @@
 ## Tool Name
 mosdepth
 ## Version
-0.2.3
+0.3.3
 ## Citation
 https://doi.org/10.1093/bioinformatics/btx699
 ## How to use GFANZ Docker Containers
