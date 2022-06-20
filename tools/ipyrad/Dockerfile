@@ -1,6 +1,6 @@
 # Base image (note that a specific version of the base image must be used,
 # never the "latest") or "stable"
-FROM debian:11
+FROM debian:10
 
 ##########
 # Metadata
@@ -67,4 +67,4 @@ RUN ["/bin/bash", "-cx", "/home/debian/install.sh"]
 WORKDIR /mnt
 
 # Set the entrypoint
-ENTRYPOINT ["/opt/miniconda2/bin/ipyrad"]
+ENTRYPOINT ["/opt/conda/bin/ipyrad"]
