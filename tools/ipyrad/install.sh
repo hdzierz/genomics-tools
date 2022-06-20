@@ -8,6 +8,10 @@
 apt-get update
 apt-get install -y curl python2.7 gpg
 
+# Remove python3.10
+
+apt-get remove --purge python3.10
+
 # Install mini-conda
 # Install our public GPG key to trusted store
 curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
