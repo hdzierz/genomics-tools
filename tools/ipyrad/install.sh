@@ -3,10 +3,10 @@
 # This program is to set up a docker image for the ipyrad version 0.9.83
 # It assumes a Debian 11 base image has been used for the container.
 
-# Update package database and install curl
+# Update package database and install curl & gpg
 
 apt-get update
-apt-get install -y curl
+apt-get install -y curl gpg
 
 # Install mini-conda
 # Install our public GPG key to trusted store
