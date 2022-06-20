@@ -10,7 +10,11 @@ apt-get install -y curl python2.7 gpg
 
 # Remove python
 
-apt-get remove --purge python3-minimal
+#apt-get remove --purge python3-minimal
+
+# List installed packages so we can identify python3 and remove it
+
+dpkg --get-selections
 
 # Install mini-conda
 # Install our public GPG key to trusted store
