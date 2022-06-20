@@ -5,8 +5,8 @@
 
 # Update package database and install curl
 
-apt update
-apt install -y curl
+apt-get update
+apt-get install -y curl
 
 # Install mini-conda
 # Install our public GPG key to trusted store
@@ -20,12 +20,12 @@ gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
 
 # Install it!
-apt update
-apt install -y conda
+apt-get update
+apt-get install -y conda
 
 # Remove curl
 
-apt remove -y curl
+apt-get remove -y curl
 
 # Install ipyrad
 
