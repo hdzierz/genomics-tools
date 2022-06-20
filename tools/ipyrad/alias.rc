@@ -1,0 +1,1 @@
+alias ipyrad='docker run --rm -v /mnt:/mnt gfanz/ipyrad'
