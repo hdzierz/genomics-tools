@@ -29,4 +29,4 @@ apt-get remove -y curl
 
 # Install ipyrad
 
-/opt/miniconda2/bin/conda install ipyrad -c conda-forge -c bioconda
+/opt/conda/condabin/conda install ipyrad -c conda-forge -c bioconda
