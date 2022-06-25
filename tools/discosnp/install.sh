@@ -7,7 +7,6 @@
 
 apt-get update
 apt-get install -y wget \
-                   bwa \
                    tree
 
 # Install mini-conda
@@ -26,4 +25,4 @@ apt-get autoremove -y
 
 # let's see what is in the installed subdirectory
 
-tree -R /opt/conda/bin/
+tree /opt/conda/bin/
