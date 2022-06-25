@@ -1,5 +1,9 @@
-# This file provides information for making the access to the tool as if it were locally installed. The first alias points to 
-# the access point defined in the docker file as in the uncommented example below. Any additional aliases must be in the form:
-# ; alias BINARY-FILE-NAME='docker run --rm -v /mnt:/mnt --entrypoint "PATH-TO-BINARY" gfanz/TOOL'
-# ALL OF THE COMMENT LINES MUST BE REMOVED BEFORE COMMITTING OR THE DOCKER FILE ENTRY WILL BE WRONG
-alias helloworld='docker run --rm -v /mnt:/mnt gfanz/template'
+alias run_discoSnp++.sh='docker run --rm -v /mnt:/mnt gfanz/template'
+; alias run_discoSnp++_ML.sh='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/bin/run_discoSnp++_ML.sh" gfanz/discosnp'
+; alias run_discoSnpRad.sh='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/bin/run_discoSnpRad.sh" gfanz/discosnp'
+; alias 1SNP_per_cluster.py='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/1SNP_per_cluster.py" gfanz/discosnp'
+; alias add_cluster_info_to_mapped_vcf.py='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/add_cluster_info_to_mapped_vcf.py" gfanz/discosnp'
+; alias filter_by_cluster_size_and_rank.py='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/filter_by_cluster_size_and_rank.py" gfanz/discosnp'
+; alias filter_paralogs.py='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/filter_paralogs.py" gfanz/discosnp'
+; alias filter_vcf_by_indiv_cov_max_missing_and_maf.py='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/filter_vcf_by_indiv_cov_max_missing_and_maf.py" gfanz/discosnp'
+; alias vcf2structure.sh='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/vcf2structure.sh" gfanz/discosnp'

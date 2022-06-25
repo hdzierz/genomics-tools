@@ -67,4 +67,4 @@ RUN ["/bin/bash", "-cx", "/home/debian/install.sh"]
 WORKDIR /mnt
 
 # Set the entrypoint
-ENTRYPOINT ["/opt/conda/bin/discosnp/run_discoSnp++.sh"]
+ENTRYPOINT ["/opt/conda/bin/run_discoSnp++.sh"]

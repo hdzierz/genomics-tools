@@ -6,8 +6,7 @@
 # Update package database and install wget.
 
 apt-get update
-apt-get install -y wget \
-                   tree
+apt-get install -y wget
 
 # Install mini-conda
 cd /tmp
@@ -21,8 +20,4 @@ apt-get autoremove -y
 
 # Install discosnp via conda
 
-/opt/conda/condabin/conda install -c bioconda discosnp
-
-# let's see what is in the installed subdirectory
-
-tree /opt/conda/bin/
+/opt/conda/condabin/conda install -c bioconda -y discosnp
