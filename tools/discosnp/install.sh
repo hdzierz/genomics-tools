@@ -6,23 +6,43 @@
 # Update package database and install wget.
 
 apt-get update
-apt-get install -y wget
+apt-get install -y \
+    wget \
+    gcc \
+    g++ \
+    make \
+    cmake \
+    zlib1g-dev \
+    libboost-dev \
+    git \
+    bwa \
+    perl \
+    python3
 
-# Install mini-conda
+# Configure git
+git config --global http.sslVerify false
+
+# Clone, compile, and install discosnp
 cd /tmp
-wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
+git clone --recursive https://github.com/GATB/DiscoSnp.git
+cd DiscoSnp
+sh INSTALL
 
-bash Miniconda3-py39_4.12.0-Linux-x86_64.sh -b -p /opt/conda
+# Clone, compile, and install short read connector.
+git clone --recursive https://github.com/GATB/rconnector.git
+cd rconnector
+sh INSTALL
 
-# Remove wget
-apt-get remove -y wget
-apt-get autoremove -y
+# Cleanup
 
-# Install discosnp via conda
+apt-get remove --purge \
+    wget \
+    gcc \
+    g++ \
+    make \
+    cmake \
+    zlib1g-dev \
+    libboost-dev \
+    git
 
-/opt/conda/condabin/conda install -c bioconda -y discosnp
 
-# The discovar scripts call conda installed binaries, but they are not in the path.
-# Link the files in /opt/conda/bin to /usr/bin so that they are found
-
-ln -s /opt/conda/bin/* /usr/bin/
