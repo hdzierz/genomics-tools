@@ -24,4 +24,6 @@ apt-get autoremove -y
 
 # Add /opt/conda/bin to path
 
-sed --in-place 's/PATH=\"/PATH=\"\/opt\/conda\/bin:/g' /etc/login.defs
+#sed --in-place 's/PATH=\"/PATH=\"\/opt\/conda\/bin:/g' /etc/login.defs
+
+echo "PATH=$PATH:/opt/conda/bin" >> ~/.bashrc
