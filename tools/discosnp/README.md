@@ -1,14 +1,14 @@
 ## Tool Name
-template
+discosnp
 ## Version
-1.0.0
+2.6.2
 ## Citation
-If there is a publication associate with the tool put the DOI here, else leave blank.
+https://doi.org/10.7717/peerj.9291, https://doi.org/10.1093/nar/gku1187, https://doi.org/10.1101/209965
 ## How to use GFANZ Docker Containers
 https://gitlab.com/gfanz/genomics-tools/-/wikis/Using-GFANZ-Genomics-Tools
 ## Documentation
-Put a link to the documentation here.
+https://github.com/GATB/DiscoSnp/tree/master/doc
 ## Source Code
-Put a link to the source code here.
+https://github.com/GATB/DiscoSnp
 ## License
-Put the name and version of the license for the tool here.
+AGPL-3.0-only

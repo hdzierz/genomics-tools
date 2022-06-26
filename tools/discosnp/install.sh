@@ -21,3 +21,7 @@ apt-get autoremove -y
 # Install discosnp via conda
 
 /opt/conda/condabin/conda install -c bioconda -y discosnp
+
+# Add /opt/conda/bin to path
+
+sed --in-place 's/PATH=\"/PATH=\"\/opt\/conda\/bin:/g' /etc/profile

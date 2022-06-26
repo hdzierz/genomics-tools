@@ -4,7 +4,7 @@
 # If it does, then output GFANZ_TEST_RESULTS=OK. If it does not, then output
 # GFANZ_TEST_RESULTS=ERROR.
 
-/opt/conda/bin/run_discoSnp++.sh | grep disco >> /dev/null
+/opt/conda/bin/run_discoSnp++.sh | grep Version >> /dev/null
 
 if [ $? -eq 0 ]; then
   echo "GFANZ_TEST_RESULTS=OK"
