@@ -6,43 +6,18 @@
 # Update package database and install wget.
 
 apt-get update
-apt-get install -y \
-    wget \
-    gcc \
-    g++ \
-    make \
-    cmake \
-    zlib1g-dev \
-    libboost-dev \
-    git \
-    bwa \
-    perl \
-    python3
+apt-get install -y wget
 
-# Configure git
-git config --global http.sslVerify false
-
-# Clone, compile, and install discosnp
+# Install mini-conda
 cd /tmp
-git clone --recursive https://github.com/GATB/DiscoSnp.git
-cd DiscoSnp
-sh INSTALL
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
 
-# Clone, compile, and install short read connector.
-git clone --recursive https://github.com/GATB/rconnector.git
-cd rconnector
-sh INSTALL
+bash Miniconda3-py39_4.12.0-Linux-x86_64.sh -b -p /opt/conda
 
-# Cleanup
+# Remove wget
+apt-get remove -y wget
+apt-get autoremove -y
 
-apt-get remove --purge \
-    wget \
-    gcc \
-    g++ \
-    make \
-    cmake \
-    zlib1g-dev \
-    libboost-dev \
-    git
+# Install discosnp via conda
 
-
+/opt/conda/condabin/conda install -c bioconda -y discosnp

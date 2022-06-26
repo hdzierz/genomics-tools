@@ -57,6 +57,10 @@ RUN apt-get update
 # Copy the install script
 ADD install.sh /home/debian/
 
+# Set ENV to include /opt/conda/bin
+
+ENV PATH="/opt/conda/bin:${PATH}"
+
 # Copy the test script
 ADD test.sh /home/debian/
 
