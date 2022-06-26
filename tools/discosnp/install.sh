@@ -22,8 +22,7 @@ apt-get autoremove -y
 
 /opt/conda/condabin/conda install -c bioconda -y discosnp
 
-# Add /opt/conda/bin to path
+# The discovar scripts call conda installed binaries, but they are not in the path.
+# Link the files in /opt/conda/bin to /usr/bin so that they are found
 
-#sed --in-place 's/PATH=\"/PATH=\"\/opt\/conda\/bin:/g' /etc/login.defs
-
-echo "PATH=$PATH:/opt/conda/bin" >> ~/.bashrc
+ln -s /opt/conda/bin/* /usr/bin/
