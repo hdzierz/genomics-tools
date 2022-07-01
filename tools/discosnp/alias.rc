@@ -1,4 +1,4 @@
-alias run_discoSnp++.sh='docker run --rm -v /mnt:/mnt gfanz/template'
+alias run_discoSnp++.sh='docker run --rm -v /mnt:/mnt gfanz/discosnp'
 ; alias run_discoSnp++_ML.sh='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/bin/run_discoSnp++_ML.sh" gfanz/discosnp'
 ; alias run_discoSnpRad.sh='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/bin/run_discoSnpRad.sh" gfanz/discosnp'
 ; alias 1SNP_per_cluster.py='docker run --rm -v /mnt:/mnt --entrypoint "/opt/conda/discoSnpRAD/post-processing_scripts/1SNP_per_cluster.py" gfanz/discosnp'
