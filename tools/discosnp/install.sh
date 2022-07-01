@@ -52,18 +52,17 @@ chmod +x /opt/conda/scripts/simulations/targeted_mut_fasta_corrected.py
 # Add env in path for python scripts
 # sed -i '1c\#!/usr/bin/env python3' file 
 
-
 sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/functionObjectVCF_creator.py
 sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/keep_extensions_disco_file.py
 sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/redundancy_removal_discosnp.py
 sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/VCF_creator.py
 sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/remove_extensions_disco_file.py
 
-sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/discoSnpRAD/post-processing_scripts/1SNP_per_cluster.py
-sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/discoSnpRAD/post-processing_scripts/add_cluster_info_to_mapped_vcf.py
-sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/discoSnpRAD/post-processing_scripts/filter_by_cluster_size_and_rank.py
-sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/discoSnpRAD/post-processing_scripts/filter_paralogs.py
-sed -i '1c\#!/usr/bin/env python3' /opt/conda/scripts/discoSnpRAD/post-processing_scripts/filter_vcf_by_indiv_cov_max_missing_and_maf.py
+sed -i '1c\#!/usr/bin/env python3' /opt/conda/discoSnpRAD/post-processing_scripts/1SNP_per_cluster.py
+sed -i '1c\#!/usr/bin/env python3' /opt/conda/discoSnpRAD/post-processing_scripts/add_cluster_info_to_mapped_vcf.py
+sed -i '1c\#!/usr/bin/env python3' /opt/conda/discoSnpRAD/post-processing_scripts/filter_by_cluster_size_and_rank.py
+sed -i '1c\#!/usr/bin/env python3' /opt/conda/discoSnpRAD/post-processing_scripts/filter_paralogs.py
+sed -i '1c\#!/usr/bin/env python3' /opt/conda/discoSnpRAD/post-processing_scripts/filter_vcf_by_indiv_cov_max_missing_and_maf.py
     
 # Change \r\n line endings to \n only (dos2unix)
 
