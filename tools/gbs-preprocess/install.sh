@@ -7,7 +7,7 @@
 
 apt-get update
 apt-get install -y \
-    wget \
+    git \
     trim-galore \
     perl
 
@@ -19,13 +19,16 @@ cpan -i   Getopt::Long \
     
 # install gbs-preprocess
 cd /opt
-mkdir gbs-preprocess
-cd gbs-preprocess
-wget https://github.com/relshire/GBS-PreProcess/blob/master/batch_trim.pl
-wget https://github.com/relshire/GBS-PreProcess/blob/master/batch_trim_se.pl
-wget https://github.com/relshire/GBS-PreProcess/blob/master/verify_chimeras.pl
-chmod +x /opt/gbs-preprocess/*
+
+git clone https://github.com/relshire/GBS-PreProcess.git
+
+mv GBS-PreProcess gbs-preprocess
 
 # Collect the garbage
 
-apt-get remove --purge -y wget
+apt-get remove --purge -y \
+    git
+    
+apt-get autoremove --purge -y
+
+apt-get clean
