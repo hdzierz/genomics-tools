@@ -24,6 +24,8 @@ git clone https://github.com/relshire/GBS-PreProcess.git
 
 mv GBS-PreProcess gbs-preprocess
 
+chmod +x /opt/gbs-preprocess/*.pl
+
 # Collect the garbage
 
 apt-get remove --purge -y \
