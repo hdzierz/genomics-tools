@@ -1,0 +1,3 @@
+alias batch_trim.pl='docker run --rm -v /mnt:/mnt gfanz/gbs-preprocess'
+; alias batch_trim_se.pl='docker run --rm -v /mnt:/mnt --entrypoint "/opt/gbs-preprocess/batch_trim_se.pl" gfanz/gbs-preprocess'
+; alias BINARY-FILE-NAME='docker run --rm -v /mnt:/mnt --entrypoint "/opt/gbs-preprocess/verify_chimeras.pl" gfanz/gbs-preprocess'
