@@ -1,6 +1,6 @@
 # Base image (note that a specific version of the base image must be used,
 # never the "latest") or "stable"
-FROM debian:9
+FROM debian:11
 
 ##########
 # Metadata
@@ -67,4 +67,4 @@ RUN ["/bin/bash", "-cx", "/home/debian/install.sh"]
 WORKDIR /mnt
 
 # Set the entrypoint
-ENTRYPOINT ["/opt/tassel5-src/run_pipeline.pl"]
+ENTRYPOINT ["/opt/tasseladmin-tassel-5-standalone-b50545facd1a/run_pipeline.pl"]
