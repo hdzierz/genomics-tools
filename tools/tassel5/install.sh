@@ -20,21 +20,17 @@ cd /opt
 wget --no-check-certificate  "https://data.elshiregroup.co.nz/index.php/s/mibW6xktz4GzBqn/download" -P /tmp
 mv /tmp/download /tmp/tassel5-TEGenzymes.v.2.tar.gz
 
-curl https://bitbucket.org/tasseladmin/tassel-5-standalone/get/b50545facd1a663567f94aa7d7160b9067bf2eca.tar.gz --output /tmp/tassel5_standalone.tar.gz
+curl https://bitbucket.org/tasseladmin/tassel-5-standalone/get/6557864512a89932710b9f53c6005a35ad6c526e.tar.gz --output /tmp/tassel5_standalone.tar.gz
 
 # Unpack TASSEL5
 tar -xzf /tmp/tassel5_standalone.tar.gz -C /opt
 
 # Make files readable and executable by all user
-chmod -R 755 /opt/tasseladmin-tassel-5-standalone-b50545facd1a
-
-# Replace the sqlite.jar with one that supports large databases.
-
-curl https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.8.5-pre1/sqlite-jdbc-3.8.5-pre1.jar --output /opt/tasseladmin-tassel-5-standalone-b50545facd1a/lib/sqlite-jdbc-3.39.2.1.jar
+chmod -R 755 /opt/tasseladmin-tassel-5-standalone-6557864512a8
 
 # Add TEG Enzymes to enzymes.ini
 
-echo -e "\n[TEGAPEKI]\nname = TEGApeKI\ninitialCutSiteRemnant = CAGC,CTGC\nlikelyReadEnd = GCAGC,GCTGC,GCAGAGAT,GCTGAGAT,GCAGAGTT,GCTGAGTT,GCAGGCCT,GCTGGCCT,GCAGAACCT,GCTGAACCT,GCAGTAGG,GCTGTAGG,GCAGACAGG,GCTGACAGG,GCAGTCAAGG,GCTGTCAAGG,GCAGACGTTC,GCTGACGTTC,GCAGTCTTC, GCTGTCTTC,GCAGATCCGC,GCTGATCCGC,GCAGGTAA,GCTGGTAA,GCAGTTGAA,GCTGTTGAA,GCAGTCTGAA,GCTGTCTGAA\nreadEndCutSiteRemnantLength = 4\n\n[TEGPSTI]\nname = TEGPstI\ninitialCutSiteRemnant = TGCAG\nlikelyReadEnd = CTGCAG,CTGCATGGTT,CTGCAAGTT,CTGCATGCATT,CTGCA2edocraB,CTGCACGTGG,CTGCACTGG,CTGCATGACGG,CTGCATACC,CTGCACCACC,CTGCATGTGCA,CTGCATCGTAA,CTGCATCAA,CTGCATACAA\nreadEndCutSiteRemnantLength = 5\n\n[TEGECOT22I]\nname = TEGEcoT22I\ninitialCutSiteRemnant = TGCAT\nlikelyReadEnd = ATGCAT,ATGCAAGAT,ATGCATGGTT,ATGCAAGTT,ATGCATGCATT,ATGCA2edocraB,ATGCACGTGG,ATGCACTGG,ATGCATGACGG,ATGCATACC,ATGCACCACC,ATGCATGTGCA,ATGCATCGTAA,ATGCATCAA,ATGCATACAA\nreadEndCutSiteRemnantLength = 5" >> /opt/tasseladmin-tassel-5-standalone-b50545facd1a/lib/enzymes.ini
+echo -e "\n[TEGAPEKI]\nname = TEGApeKI\ninitialCutSiteRemnant = CAGC,CTGC\nlikelyReadEnd = GCAGC,GCTGC,GCAGAGAT,GCTGAGAT,GCAGAGTT,GCTGAGTT,GCAGGCCT,GCTGGCCT,GCAGAACCT,GCTGAACCT,GCAGTAGG,GCTGTAGG,GCAGACAGG,GCTGACAGG,GCAGTCAAGG,GCTGTCAAGG,GCAGACGTTC,GCTGACGTTC,GCAGTCTTC, GCTGTCTTC,GCAGATCCGC,GCTGATCCGC,GCAGGTAA,GCTGGTAA,GCAGTTGAA,GCTGTTGAA,GCAGTCTGAA,GCTGTCTGAA\nreadEndCutSiteRemnantLength = 4\n\n[TEGPSTI]\nname = TEGPstI\ninitialCutSiteRemnant = TGCAG\nlikelyReadEnd = CTGCAG,CTGCATGGTT,CTGCAAGTT,CTGCATGCATT,CTGCA2edocraB,CTGCACGTGG,CTGCACTGG,CTGCATGACGG,CTGCATACC,CTGCACCACC,CTGCATGTGCA,CTGCATCGTAA,CTGCATCAA,CTGCATACAA\nreadEndCutSiteRemnantLength = 5\n\n[TEGECOT22I]\nname = TEGEcoT22I\ninitialCutSiteRemnant = TGCAT\nlikelyReadEnd = ATGCAT,ATGCAAGAT,ATGCATGGTT,ATGCAAGTT,ATGCATGCATT,ATGCA2edocraB,ATGCACGTGG,ATGCACTGG,ATGCATGACGG,ATGCATACC,ATGCACCACC,ATGCATGTGCA,ATGCATCGTAA,ATGCATCAA,ATGCATACAA\nreadEndCutSiteRemnantLength = 5" >> /opt/tasseladmin-tassel-5-standalone-6557864512a8/lib/enzymes.ini
 
 # Clean up
 apt-get -y remove curl
