@@ -67,4 +67,4 @@ RUN ["/bin/bash", "-cx", "/home/debian/install.sh"]
 WORKDIR /mnt
 
 # Set the entrypoint
-ENTRYPOINT ["/opt/tasseladmin-tassel-5-standalone-b50545facd1a/run_pipeline.pl"]
+ENTRYPOINT ["/opt/tasseladmin-tassel-5-standalone-6557864512a8/run_pipeline.pl"]

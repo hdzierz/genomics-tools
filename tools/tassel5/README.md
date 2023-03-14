@@ -1,7 +1,7 @@
 ## Tool Name
 tassel5
 ## Version
-5.2.87
+5.2.86
 ## Citation
 http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090346
 ## How to use GFANZ Docker Containers
