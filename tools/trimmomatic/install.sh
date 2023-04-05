@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 # This program is to set up a docker image for trimmomatic 0.39.
 # It assumes a Debian 11 base image has been used for the container.
 
