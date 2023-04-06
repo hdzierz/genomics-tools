@@ -1,1 +1,1 @@
-alias TrimmomaticPE='docker run --rm -v /mnt:/mnt gfanz/trimmomatic'; alias TrimmomaticSE='docker run --rm -v --entrypoint "/usr/bin/TrimmomaticSE" /mnt:/mnt gfanz/trimmomatic'
+alias TrimmomaticPE='docker run --rm -v /mnt:/mnt gfanz/trimmomatic'; alias TrimmomaticSE='docker run --rm --entrypoint "/usr/bin/TrimmomaticSE" -v /mnt:/mnt gfanz/trimmomatic'
