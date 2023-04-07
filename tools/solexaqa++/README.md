@@ -1,14 +1,14 @@
 ## Tool Name
-template
+solexaqa++
 ## Version
-1.0.0
+3.1.7.3
 ## Citation
-If there is a publication associate with the tool put the DOI here, else leave blank.
+https://doi.org/10.1186/1471-2105-11-485
 ## How to use GFANZ Docker Containers
 https://gitlab.com/gfanz/genomics-tools/-/wikis/Using-GFANZ-Genomics-Tools
 ## Documentation
-Put a link to the documentation here.
+https://solexaqa.sourceforge.net/
 ## Source Code
-Put a link to the source code here.
+https://solexaqa.sourceforge.net/
 ## License
-Put the name and version of the license for the tool here.
+GPL-3.0-only
