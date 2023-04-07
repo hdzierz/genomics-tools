@@ -8,8 +8,8 @@ apt-get update
 apt-get -y upgrade
 
 # Install dependencies for graphics for reports and curl to download SolexaQA++
-apt-get -y install\ 
-    r-cran-gridbase\
+apt-get -y install \ 
+    r-cran-gridbase \
     curl
 
 # install SolexaQA++
