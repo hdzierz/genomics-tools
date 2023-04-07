@@ -8,10 +8,12 @@ apt-get update
 apt-get -y upgrade
 
 # Install dependencies for graphics for reports and curl to download SolexaQA++
-apt-get -y install \ 
+apt-get -y install \
     r-cran-gridbase \
-    curl
+    curl \
+    unzip
 
+    
 # install SolexaQA++
 curl https://versaweb.dl.sourceforge.net/project/solexaqa/src/SolexaQA%2B%2B_v3.1.7.3.zip -o /tmp/SolexaQA%2B%2B_v3.1.7.3.zip
 cd /tmp
@@ -19,5 +21,5 @@ unzip SolexaQA%2B%2B_v3.1.7.3.zip
 mv /tmp/SolexaQA%2B%2B_v3.1.7.3/Linux_x64/SolexaQA++ /opt/
 
 # Clean up - Remove any packages / files needed only to build the image (e.g. build-essential) and clean the apt cache files.
-apt-get remove --purge curl
+apt-get remove --purge curl unzip
 apt-get clean
