@@ -18,7 +18,7 @@ apt-get -y install \
 curl https://versaweb.dl.sourceforge.net/project/solexaqa/src/SolexaQA%2B%2B_v3.1.7.3.zip -o /tmp/SolexaQA%2B%2B_v3.1.7.3.zip
 cd /tmp
 unzip SolexaQA%2B%2B_v3.1.7.3.zip
-mv /tmp/SolexaQA%2B%2B_v3.1.7.3/Linux_x64/SolexaQA++ /opt/
+mv /tmp/SolexaQA%2B%2B_v3.1.7.3/Linux_x64/SolexaQA%2B%2B /opt/
 
 # Clean up - Remove any packages / files needed only to build the image (e.g. build-essential) and clean the apt cache files.
 apt-get remove --purge curl unzip
