@@ -10,7 +10,7 @@ apt-get -y upgrade
 # install atropos and suggested
 apt-get -y install \
     atropos \
-    tqdm \
+    python3-tqdm \
     python3-jinja2 \
     khmer \
     python3-pysam
