@@ -21,5 +21,4 @@ unzip SolexaQA%2B%2B_v3.1.7.3.zip
 mv /tmp/SolexaQA\+\+_v3.1.7.3/Linux_x64/SolexaQA\+\+ /opt/
 
 # Clean up - Remove any packages / files needed only to build the image (e.g. build-essential) and clean the apt cache files.
-apt-get remove --purge unzip
 apt-get clean
