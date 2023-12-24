@@ -1,7 +1,7 @@
 ## Tool Name
 bwa
 ## Version
-0.7.17-3
+0.7.17-6+b1
 ## Citation
 https://doi.org/10.1093/bioinformatics/btp324
 https://doi.org/10.1093/bioinformatics/btp6
