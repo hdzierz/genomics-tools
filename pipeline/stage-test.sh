@@ -1,5 +1,5 @@
 #!/bin/bash -x
-# The test stage is responsible for tesing the container image produced and
+# The test stage is responsible for testing the container image produced and
 # validating it works as expected.
 
 # If no arguments were passed, show help and exit.

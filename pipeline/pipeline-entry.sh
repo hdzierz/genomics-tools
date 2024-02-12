@@ -5,11 +5,11 @@
 # appropriate git command can be used to compare the proposed change versus the
 # master branch and find out what has been modified.
 DELTA_SRC=''
-echo ${CI_COMMIT_MESSAGE} | grep -q "See merge request ${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}"
-if [ $? -eq 0 -a ${CI_PIPELINE_SOURCE} == 'push' ]; then
+echo "${CI_COMMIT_MESSAGE}" | grep -q "See merge request ${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}"
+if [ $? -eq 0 -a "${CI_PIPELINE_SOURCE}" == 'push' ]; then
   echo "CI/CD triggered by a merge event."
   DELTA_SRC='merge'
-elif [ ${CI_COMMIT_REF_NAME} != "master" -a ${CI_PIPELINE_SOURCE} == 'push' ]; then
+elif [ "${CI_COMMIT_REF_NAME}" != "master" -a "${CI_PIPELINE_SOURCE}" == 'push' ]; then
   echo "CI/CD triggered by a branch push event."
   DELTA_SRC='branch_push'
 else
@@ -32,7 +32,7 @@ else
 fi
 
 # Find out what tools have been modified in this change.
-TOOLS_MODIFIED=$(git diff ${DELTA_BEFORE_TAG} ${DELTA_TAG} --name-only | grep "^tools/" | cut -d'/' -f2 | sort | uniq)
+TOOLS_MODIFIED=$(git diff ${DELTA_BEFORE_TAG} "${DELTA_TAG}" --name-only | grep "^tools/" | cut -d'/' -f2 | sort | uniq)
 
 # If nothing changed, exit the job immediately. Otherwise, run the current
 # stage of the pipeline for the tool(s) modified. The environment variable
@@ -53,7 +53,7 @@ if [[ ${TOOLS_MODIFIED} == "" ]]; then
   exit 0
 else
   for TOOL in ${TOOLS_MODIFIED}; do
-    if TOOL == "README.md"; then
+    if [ "$TOOL" == "README.md" ]; then
         echo "README.md modified moving on"
     else    
     bash -x "pipeline/stage-${CI_JOB_STAGE}.sh" "${TOOL}"

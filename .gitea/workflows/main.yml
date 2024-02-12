@@ -1,0 +1,36 @@
+name: Create Docker Images
+run-name: ${{ gitea.actor }} is is running Create Docker Images
+
+
+on:
+  push:
+    branches:
+        - "master"
+        - "issue**"
+
+env:
+  EXTERNAL_REGISTRY: "docker.io"
+
+jobs:
+  test:
+    runs-on: default
+    steps:
+      - name: test # on always
+        run: |
+          bash -x pipeline/pipeline-entry.sh
+  build:
+    runs-on: default
+    needs:
+      - test
+    steps:
+      - name: build # on always
+        run: |
+          bash -x pipeline/pipeline-entry.sh
+  deploy:
+    runs-on: default
+    needs:
+      - build
+    steps:
+      - name: deploy # on master
+        run: |
+          bash -x pipeline/pipeline-entry.sh

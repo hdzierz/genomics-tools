@@ -9,7 +9,7 @@
 # Collect meta-data
 ###################
 
-# The tool name must be passed as an agument
+# The tool name must be passed as an argument
 if [ -z "${1}" ]; then
   echo "The tool name must be provided as an argument"
   exit 1
@@ -18,7 +18,7 @@ else
   echo "TOOL_NAME ${TOOL_NAME}"
 fi
 
-cd "tools/${TOOL_NAME}"
+cd "tools/${TOOL_NAME}" || exit
 
 MAINTAINER=$(cat MAINTAINER)
 
