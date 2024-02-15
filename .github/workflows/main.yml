@@ -35,9 +35,9 @@ jobs:
       - init
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: build # on always
-        uses: ./.github/workflows/docker-build
+        uses: ./.github/workflows/build
         with:
           stage: build
           tools-dir: tools
@@ -49,9 +49,9 @@ jobs:
       - build
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: test # on always
-        uses: ./.github/workflows/docker-build
+        uses: ./.github/workflows/build
         with:
           stage: test
           tools-dir: tools
@@ -63,9 +63,9 @@ jobs:
       - build
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: deploy # on always
-        uses: ./.github/workflows/docker-build
+        uses: ./.github/workflows/build
         with:
           stage: deploy
           tools-dir: tools
