@@ -13,8 +13,8 @@ TOOL="${1}"
 # Load the container image created by the build stage and validated by the test
 # stage from the file-system.
 echo "Loading container image for ${TOOL}."
-docker image load -i image/${TOOL}.tar
-if [ $? -ne 0 ]; then
+
+if docker image load -i /tmp/image/"${TOOL}".tar; then
   echo "Loading container image for ${TOOL} failed. Exiting."
   exit 1
 fi
@@ -26,8 +26,8 @@ fi
 # needs to be defined and its contents must be a valid docker 'config.json' for
 # this user.
 echo "Log in to container repository."
-docker login -u ${DOCKER_IO_USER} -p ${DOCKER_IO_PASSWORD} ${EXTERNAL_REGISTRY}/${CI_PROJECT_NAMESPACE}/${TOOL}
-if [ $? -ne 0 ]; then
+
+if docker login -u "${DOCKER_IO_USER}" -p "${DOCKER_IO_PASSWORD}" "${EXTERNAL_REGISTRY}"/"${CI_PROJECT_NAMESPACE}"/"${TOOL}"; then
   echo "Docker login failed. Exiting."
   exit 1
 fi
@@ -35,13 +35,12 @@ fi
 # Tag the image with the "${VERSION}", "${VERSION}-${CI_COMMIT_SHORT_SHA}", and
 # "latest" tags.
 echo "Tagging ${EXTERNAL_REGISTRY}/${CI_PROJECT_NAMESPACE}."
-VERSION=$(cat tools/${TOOL}/VERSION)
+VERSION=$(cat tools/"${TOOL}"/VERSION)
 TAGS="${CI_PROJECT_NAMESPACE}/${TOOL}:latest
 ${CI_PROJECT_NAMESPACE}/${TOOL}:${VERSION}
 ${CI_PROJECT_NAMESPACE}/${TOOL}:${VERSION}-${CI_COMMIT_SHORT_SHA}"
 for TAG in ${TAGS}; do
-  docker tag ${TOOL}:latest ${TAG}
-  if [ $? -ne 0 ]; then
+  if docker tag "${TOOL}":latest "${TAG}"; then
     echo "Tag of ${TOOL} with ${TAG} failed. Exiting."
     exit 1
   fi
@@ -49,35 +48,10 @@ done
 
 # Push the tagged image to the container registry under the defined namespace.
 echo "Pushing container image to registry."
-docker push ${CI_PROJECT_NAMESPACE}/${TOOL}
-if [ $? -ne 0 ]; then
+
+if docker push "${CI_PROJECT_NAMESPACE}"/"${TOOL}"; then
   echo "Pushing ${TOOL} to ${CI_PROJECT_NAMESPACE}/${TOOL} failed. Exiting."
   exit 1
 fi
-
-# Process to update the full description for a tool on dockerhub. 
-
-# Select the README.md file for the current tool to use as the full description.
-# The path below is still not working right.
-#README_FILEPATH="${CI_MERGE_REQUEST_PROJECT_PATH}/tools/${TOOL}/README.md"
-
-# Test that this is the right patch
-
-#cat $README_FILEPATH
-
-
-# Send a PATCH request to update the description of the repository
-# Halting on this work for the moment RJE 20200112
-
-#echo "Sending PATCH request"
-#REPO_URL="https://hub.docker.com/v2/repositories/gfanz/${TOOL}/"
-#RESPONSE_CODE=$(curl -s --write-out %{response_code} --output /dev/null -H "Authorization: JWT ${DOCKER_IO_TOKEN}" -X PATCH --data-urlencode #full_description@${README_FILEPATH} ${REPO_URL})
-#echo "Received response code: $RESPONSE_CODE"
-
-#if [ $RESPONSE_CODE -eq 200 ]; then
-#  echo "Update FIXME "
-#else
-#  exit 1
-#fi
 
 exit 0

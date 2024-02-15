@@ -12,25 +12,56 @@ env:
   EXTERNAL_REGISTRY: "docker.io"
 
 jobs:
-  test:
+  init:
     runs-on: default
+    outputs:
+      tools-changed: ${{ steps.tools-changed.output.tools-changed }}
     steps:
-      - name: test # on always
-        run: |
-          bash -x pipeline/pipeline-entry.sh
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: tools-changed
+        uses: tools-changed
+        with:
+          tools-dir: tools
   build:
     runs-on: default
     needs:
-      - test
+      - init
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: build # on always
-        run: |
-          bash -x pipeline/pipeline-entry.sh
+        uses: docker-build
+        with:
+          stage: build
+          tools-dir: tools
+          tools-modified: ${{needs.init.outputs.tools-modified}}
+          build-version: ${{github.ref_name}}
+  test:
+    runs-on: default
+    needs:
+      - build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: test # on always
+        uses: docker-build
+        with:
+          stage: test
+          tools-dir: tools
+          tools-modified: ${{needs.init.outputs.tools-modified}}
+          build-version: ${{github.ref_name}}
   deploy:
     runs-on: default
     needs:
       - build
     steps:
-      - name: deploy # on master
-        run: |
-          bash -x pipeline/pipeline-entry.sh
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: deploy # on always
+        uses: docker-build
+        with:
+          stage: deploy
+          tools-dir: tools
+          tools-modified: ${{needs.init.outputs.tools-modified}}
+          build-version: ${{github.ref_name}}

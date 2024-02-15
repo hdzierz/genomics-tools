@@ -1,0 +1,22 @@
+
+
+name: 'check_modified'
+description: 'Check for modified genomic tools'
+inputs:
+  tools-dir:
+    description: 'The  name of the directory that contains tools.'
+    required: true
+    default: 'tools'
+outputs:
+  tools-modified:
+    description: "The list of tools that have changed"
+    value: ${{ steps.check-changed.outputs.tools-modified }}
+runs:
+  using: "composite"
+  steps:
+    - name: check-changed
+      run: |
+        echo "tools-modified=$(git diff --name-only -r HEAD^1 HEAD | grep "^$TOOLS_DIR/" | cut -d'/' -f2 | sort | uniq)" >> $GITEA_OUTPUT
+      shell: bash
+      env:
+        TOOLS_DIR: ${{ inputs.tools-dir }}

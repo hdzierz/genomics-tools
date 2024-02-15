@@ -12,15 +12,15 @@ TOOL="${1}"
 
 # Load the container image produced by the build stage of the pipeline.
 echo "Loading container image for ${TOOL}."
-docker image load -i image/${TOOL}.tar
-if [ $? -ne 0 ]; then
+
+if docker image load -i /tmp/image/"${TOOL}".tar; then
   echo "Loading container image for ${TOOL} failed. Exiting."
   exit 1
 fi
 
 # Run tests to validate the container works as expected.
-docker run -v ${CI_PROJECT_DIR}/tools/${TOOL}:/mnt --entrypoint "/home/debian/test.sh" ${TOOL}
-if [ $? -eq 0 ]; then
+
+if docker run -v "${CI_PROJECT_DIR}"/tools/"${TOOL}":/mnt --entrypoint "/home/debian/test.sh" "${TOOL}"; then
   echo "Tests for ${TOOL} succeeded."
 else
   echo "Tests for ${TOOL} failed. Exiting."

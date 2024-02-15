@@ -1,5 +1,5 @@
 #!/bin/bash -x
-# The build stage is responsible for creating a contianer image and saving it
+# The build stage is responsible for creating a container image and saving it
 # to the local file-system of the CI runner host, so it can be used by
 # subsequent stages of the CI/CD pipeline.
 
@@ -13,19 +13,18 @@ TOOL="${1}"
 
 # Use the docker-build.sh script to create a container image for the tool.
 echo "Building container image for ${TOOL}."
-pipeline/docker-build.sh "${TOOL}"
-if [ $? -eq 0 ]; then
-  echo "Container image build for ${TOOL} succeeded."
-else
+
+if pipeline/docker-build.sh "${TOOL}"; then
   echo "Container image build for ${TOOL} failed. Exiting."
   exit 1
+else
+  echo "Container image build for ${TOOL} succeeded."
 fi
 
 # Save the container image produced to the local filesystem, so that the test
 # stage of the pipeline can pick it up and use it.
 echo "Saving container image for ${TOOL}."
-docker image save ${TOOL} -o image/${TOOL}.tar
-if [ $? -ne 0 ]; then
+if docker image save "${TOOL}" -o /tmp/image/"${TOOL}".tar; then
   echo "Saving container image build for ${TOOL} failed. Exiting."
   exit 1
 fi
