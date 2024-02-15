@@ -71,3 +71,6 @@ jobs:
           tools-dir: tools
           tools-modified: ${{needs.init.outputs.tools_modified}}
           build-version: ${{github.ref_name}}
+          docker-user: ${{ secrets.DOCKER_IO_USER }}
+          docker-passwd: ${{ secrets.DOCKER_IO_PASSWORD }}
+          registry: ${{ secrets.EXTERNAL_REGISTRY }}

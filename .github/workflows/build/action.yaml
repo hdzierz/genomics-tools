@@ -14,6 +14,15 @@ inputs:
   build-version:
     description: 'The build version of the docker image'
     required: true
+  docker-user:
+    description: 'The build version of the docker image'
+    required: false
+  docker-passwd:
+    description: 'The build version of the docker image'
+    required: false
+  registry:
+    description: 'registry'
+    required: false
 
 runs:
   using: composite
@@ -42,6 +51,6 @@ runs:
         TOOLS_MODIFIED: ${{ inputs.tools-modified }}
         BUILD_VERSION: ${{ inputs.build-version }}
         GITHUB_ACTION_PATH: ${{ github.action_path }}
-        DOCKER_IO_USER: ${{ secrets.DOCKER_IO_USER }}
-        DOCKER_IO_PASSWORD: ${{ secrets.DOCKER_IO_PASSWORD }}
-        EXTERNAL_REGISTRY: ${{ secrets.EXTERNAL_REGISTRY }}
+        DOCKER_IO_USER: ${{ inputs.docker-user }}
+        DOCKER_IO_PASSWORD: ${{ inputs.docker-passwd }}
+        EXTERNAL_REGISTRY: ${{ inputs.registry }}
