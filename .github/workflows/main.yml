@@ -8,6 +8,7 @@ on:
         - "master"
         - "main"
         - "issue**"
+        - "WORK**"
   pull_request:
 
 
