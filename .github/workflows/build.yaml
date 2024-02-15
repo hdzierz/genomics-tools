@@ -1,18 +1,22 @@
 name: 'build-genomic-tools'
 
 on:
-  workflow-call:
+  workflow_call:
     inputs:
       stage:
+        type: string
         description: 'Whether to build, test or deploy'
       tools-dir:
+        type: string
         description: 'The  name of the directory that contains tools.'
         required: true
         default: 'tools'
       tools-modified:
+        type: string
         description: 'The tools that have been modified'
         required: false
       build-version:
+        type: string
         description: 'The build versio of the docker image'
         required: true
 
