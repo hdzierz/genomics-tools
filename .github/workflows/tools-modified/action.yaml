@@ -20,6 +20,7 @@ runs:
       id: check-modified
       run: |
         echo "tools_modified=$(git diff --name-only -r HEAD^1 HEAD | grep "^$TOOLS_DIR/" | cut -d'/' -f2 | sort | uniq)" >> $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT
       shell: bash
       env:
         TOOLS_DIR: ${{ inputs.tools-dir }}
