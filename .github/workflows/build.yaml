@@ -1,5 +1,5 @@
 name: 'build-genomic-tools'
-description: 'Build Genomic tools'
+
 on:
   workflow-call:
     inputs:
@@ -27,7 +27,7 @@ jobs:
             if [ "$TOOL" == "README.md" ]; then
               echo "README.md modified moving on"
             else
-              bash -x "${GITEA_ACTION_PATH}/scripts/stage-${STAGE}.sh" "${TOOL}"
+              bash -x "${GITHUB_ACTION_PATH}/scripts/stage-${STAGE}.sh" "${TOOL}"
               if [ $? -eq 0 ]; then
                 echo "Stage ${CI_JOB_STAGE} for ${TOOL} succeeded."
               else
@@ -42,7 +42,7 @@ jobs:
           REF: ${{ github.ref_name }}
           TOOLS_MODIFIED: ${{ inputs.tools-modified }}
           BUILD_VERSION: ${{ inputs.build-version }}
-          GITEA_ACTION_PATH: ${{ gitea.action_path }}
+          GITHUB_ACTION_PATH: ${{ github.action_path }}
           DOCKER_IO_USER: ${{ secrets.DOCKER_IO_USER }}
           DOCKER_IO_PASSWORD: ${{ secrets.DOCKER_IO_PASSWORD }}
           EXTERNAL_REGISTRY: ${{ secrets.EXTERNAL_REGISTRY }}
