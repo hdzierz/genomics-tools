@@ -20,6 +20,8 @@ jobs:
     outputs:
       tools_modified: ${{ steps.check-modified.outputs.tools_modified }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: check-modified
         id: check-modified
         run: |
