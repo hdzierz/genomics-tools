@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v2
       - name: get-tools-modified
         id: get-tools-modified
-        uses: .github/workflows/tools-modified
+        uses: ./.github/workflows/tools-modified
         with:
           tools-dir: tools
   build:
