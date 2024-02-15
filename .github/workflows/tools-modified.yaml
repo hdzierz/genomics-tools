@@ -16,7 +16,7 @@ on:
 jobs:
   get-modified:
     name: get-modified
-    runs-on: default
+    runs-on: ubuntu-latest
     outputs:
       tools_modified: ${{ steps.check-modified.outputs.tools_modified }}
     steps:
