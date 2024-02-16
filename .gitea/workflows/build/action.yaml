@@ -30,25 +30,7 @@ runs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: build
-      run: |
-        TOOLS_MODIFIED="bwa" 
-        for TOOL in ${TOOLS_MODIFIED}; do
-          echo "#####################################################################"
-          echo "Processing ${TOOL}"
-          echo "#####################################################################"
-        
-          if [ "$TOOL" == "README.md" ]; then
-            echo "README.md modified moving on"
-          else
-            bash -x "${GITEA_ACTION_PATH}/scripts/stage-${STAGE}.sh" "${TOOL}"
-            if [ $? -eq 0 ]; then
-              echo "Stage ${CI_JOB_STAGE} for ${TOOL} succeeded."
-            else
-              echo "Stage ${CI_JOB_STAGE} for ${TOOL} failed. Exiting."
-              exit 1
-            fi
-         fi
-        done;
+      run: bash -x pipeline/pipeline-entry.sh
       shell: bash -x
       env:
         STAGE: ${{ inputs.stage }}
