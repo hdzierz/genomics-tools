@@ -8,6 +8,7 @@ on:
         - "master"
         - "main"
         - "issue**"
+        - "WORK**"
   pull_request:
 
 
@@ -17,56 +18,59 @@ env:
 
 jobs:
   init:
-    runs-on: default
+    runs-on: ubuntu-latest
     outputs:
       tools_modified: ${{ steps.get-tools-modified.outputs.tools-modified }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: get-tools-modified
         id: get-tools-modified
-        uses: hdzierz/genomics-tools/.gitea/actions/tools-modified
+        uses: ./.gitea/workflows/tools-modified
         with:
           tools-dir: tools
   build:
-    runs-on: default
+    runs-on: ubuntu-latest
     needs:
       - init
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: build # on always
-        uses: hdzierz/genomics-tools/.gitea/actions/docker-build
+        uses: ./.gitea/workflows/build
         with:
           stage: build
           tools-dir: tools
           tools-modified: ${{needs.init.outputs.tools_modified}}
           build-version: ${{gitea.ref_name}}
   test:
-    runs-on: default
+    runs-on: ubuntu-latest
     needs:
       - build
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: test # on always
-        uses: hdzierz/genomics-tools/.gitea/actions/docker-build
+        uses: ./.gitea/workflows/build
         with:
           stage: test
           tools-dir: tools
           tools-modified: ${{needs.init.outputs.tools_modified}}
           build-version: ${{gitea.ref_name}}
   deploy:
-    runs-on: default
+    runs-on: ubuntu-latest
     needs:
-      - build
+      - test
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: deploy # on always
-        uses: hdzierz/genomics-tools/.gitea/actions/docker-build
+        uses: ./.gitea/workflows/build
         with:
           stage: deploy
           tools-dir: tools
           tools-modified: ${{needs.init.outputs.tools_modified}}
           build-version: ${{gitea.ref_name}}
+          docker-user: ${{ secrets.DOCKER_IO_USER }}
+          docker-passwd: ${{ secrets.DOCKER_IO_PASSWORD }}
+          registry: ${{ secrets.EXTERNAL_REGISTRY }}
