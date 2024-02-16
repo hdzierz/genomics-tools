@@ -3,13 +3,13 @@ description: Tools modified
 
 inputs:
   tools-dir:
-    description: 'The  name of the directory that contains tools.'
+    description: 'The  name of the directory  that contains tools.'
     required: true
     default: 'tools'
 outputs:
   tools-modified:
     description: "The list of tools that have changed"
-    value: ${{ format('{0}', steps.get-tools-modified.outputs.tools-modified) }}
+    value: ${{ steps.check-modified.outputs.tools_modified }}
 
 runs:
   using: composite
