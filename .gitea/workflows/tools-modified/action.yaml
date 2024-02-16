@@ -9,7 +9,7 @@ inputs:
 outputs:
   tools-modified:
     description: "The list of tools that have changed"
-    value: ${{ steps.check-modified.outputs.tools_modified }}
+    value: ${{ format('{0}', steps.get-tools-modified.outputs.tools-modified) }}
 
 runs:
   using: composite
