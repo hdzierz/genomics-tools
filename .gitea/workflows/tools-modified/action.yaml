@@ -18,7 +18,10 @@ runs:
       uses: actions/checkout@v4
     - name: check-modified
       id: check-modified
-      run: echo "tools_modified=bwa"
+      run: |
+        echo "#####################################################################"
+        echo "tools_modified=bwa"
+        echo "#####################################################################"
         # echo "tools_modified=$(git diff --name-only -r HEAD^1 HEAD | grep "^$TOOLS_DIR/" | cut -d'/' -f2 | sort | uniq)" >> $GITEA_OUTPUT
       shell: bash
       env:
