@@ -32,7 +32,6 @@ runs:
     - name: build
       run: |
         TOOLS_MODIFIED="bwa,bowtie2" 
-        # TOOLS_MODIFIED=$(git diff --name-only -r HEAD^1 HEAD | grep "^$TOOLS_DIR/" | cut -d'/' -f2 | sort | uniq)
         for TOOL in ${TOOLS_MODIFIED}; do
           if [ "$TOOL" == "README.md" ]; then
             echo "README.md modified moving on"
@@ -50,7 +49,6 @@ runs:
       env:
         STAGE: ${{ inputs.stage }}
         REF: ${{ gitea.ref_name }}
-        TOOLS_MODIFIED: ${{ inputs.tools-modified }}
         BUILD_VERSION: ${{ inputs.build-version }}
         GITEA_ACTION_PATH: ${{ gitea.action_path }}
         DOCKER_IO_USER: ${{ inputs.docker-user }}
