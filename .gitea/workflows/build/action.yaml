@@ -33,6 +33,10 @@ runs:
       run: |
         TOOLS_MODIFIED="bwa" 
         for TOOL in ${TOOLS_MODIFIED}; do
+          echo "#####################################################################"
+          echo "Processing ${TOOL}"
+          echo "#####################################################################"
+        
           if [ "$TOOL" == "README.md" ]; then
             echo "README.md modified moving on"
           else
