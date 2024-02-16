@@ -17,60 +17,26 @@ env:
 
 
 jobs:
-  init:
-    runs-on: ubuntu-latest
-    outputs:
-      tools_modified: ${{ steps.get-tools-modified.outputs.tools-modified }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: get-tools-modified
-        id: get-tools-modified
-        uses: ./.gitea/workflows/tools-modified
-        with:
-          tools-dir: tools
   build:
     runs-on: ubuntu-latest
-    needs:
-      - init
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: build # on always
-        uses: ./.gitea/workflows/build
-        with:
-          stage: build
-          tools-dir: tools
-          tools-modified: ${{needs.init.outputs.tools_modified}}
-          build-version: ${{gitea.ref_name}}
-  test:
-    runs-on: ubuntu-latest
-    needs:
-      - build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        env:
+          CI_JOB_STAGE: build
+        run: |
+          bash -x pipeline/pipeline-entry.sh
       - name: test # on always
-        uses: ./.gitea/workflows/build
-        with:
-          stage: test
-          tools-dir: tools
-          tools-modified: ${{needs.init.outputs.tools_modified}}
-          build-version: ${{gitea.ref_name}}
-  deploy:
-    runs-on: ubuntu-latest
-    needs:
-      - test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        env:
+          CI_JOB_STAGE: test
+        run: |
+          bash -x pipeline/pipeline-entry.sh
       - name: deploy # on always
-        uses: ./.gitea/workflows/build
-        with:
-          stage: deploy
-          tools-dir: tools
-          tools-modified: ${{needs.init.outputs.tools_modified}}
-          build-version: ${{gitea.ref_name}}
-          docker-user: ${{ secrets.DOCKER_IO_USER }}
-          docker-passwd: ${{ secrets.DOCKER_IO_PASSWORD }}
-          registry: ${{ secrets.EXTERNAL_REGISTRY }}
+        env:
+          CI_JOB_STAGE: deploy
+          DOCKER_IO_USER: ${{ secrets.DOCKER_IO_USER }}
+          DOCKER_IO_PASSWORD: ${{ secrets.DOCKER_IO_PASSWORD }}
+          EXTERNAL_REGISTRY: ${{ secrets.EXTERNAL_REGISTRY }}
+        run: |
+          bash -x pipeline/pipeline-entry.sh
