@@ -8,7 +8,7 @@ inputs:
     default: 'tools'
 outputs:
   tools-modified:
-    description: "The list of tools that have changed"
+    description: "The list of tools that have changed by devs"
     value: ${{ steps.check-modified.outputs.tools_modified }}
 
 runs:
